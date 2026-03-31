@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading Explore Foundations Test 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a2744;
+    --navy-mid: #2c3e6b;
+    --gold: #c8973a;
+    --gold-light: #e8c87a;
+    --cream: #faf8f3;
+    --cream-dark: #f0ece0;
+    --text: #1e1e1e;
+    --text-mid: #4a4a4a;
+    --text-light: #7a7a7a;
+    --border: #d8d2c0;
+    --correct: #2d6a4f;
+    --incorrect: #9b2226;
+    --radius: 6px;
+  }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: var(--navy);
+    padding: 2.5rem 0 2rem;
+    text-align: center;
+    border-bottom: 4px solid var(--gold);
+    position: relative;
+  }
+  .site-header::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: var(--gold-light);
+    opacity: 0.3;
+    margin-top: 4px;
+  }
+  .site-header h1 {
+    font-family: 'Libre Baskerville', serif;
+    color: #fff;
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+  .site-header .subtitle {
+    color: var(--gold-light);
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 0.4rem;
+    font-weight: 300;
+  }
+
+  /* MAIN LAYOUT */
+  .main-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  /* STUDENT INFO CARD */
+  .info-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--navy);
+    border-radius: var(--radius);
+    padding: 2rem 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .info-card h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1rem;
+    color: var(--navy);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 580px) { .info-grid { grid-template-columns: 1fr; } }
+  .field-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    margin-bottom: 0.4rem;
+  }
+  .field-group input {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.6rem 0.85rem;
+    font-size: 1rem;
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    transition: border-color 0.15s;
+  }
+  .field-group input:focus {
+    outline: none;
+    border-color: var(--navy-mid);
+    background: #fff;
+  }
+
+  /* SECTION BLOCKS */
+  .test-section {
+    margin-bottom: 2.5rem;
+  }
+  .section-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 0.9rem 1.5rem;
+    border-radius: var(--radius) var(--radius) 0 0;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .section-header .lesson-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    font-weight: 300;
+  }
+  .section-header .section-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .passage-card {
+    background: var(--cream-dark);
+    border: 1px solid var(--border);
+    border-top: none;
+    padding: 1.5rem 2rem;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 0.93rem;
+    line-height: 1.8;
+  }
+  .passage-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--navy);
+  }
+  .passage-card p { margin-bottom: 0.85rem; }
+  .passage-card .para-label {
+    font-weight: 700;
+    color: var(--navy-mid);
+  }
+  .passage-card .footnotes {
+    border-top: 1px solid var(--border);
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    font-size: 0.82rem;
+    color: var(--text-mid);
+  }
+  .directions-bar {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.85rem;
+    color: var(--navy-mid);
+    font-style: italic;
+    font-family: 'Libre Baskerville', serif;
+  }
+  .questions-block {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+  }
+
+  /* QUESTION ROWS */
+  .question-row {
+    padding: 1.1rem 1.5rem;
+    border-bottom: 1px solid var(--cream-dark);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .question-row:last-child { border-bottom: none; }
+  .q-num {
+    font-weight: 700;
+    color: var(--navy-mid);
+    font-size: 0.9rem;
+    min-width: 28px;
+    padding-top: 2px;
+  }
+  .q-body { flex: 1; }
+  .q-text {
+    font-size: 0.95rem;
+    margin-bottom: 0.65rem;
+    color: var(--text);
+  }
+  .q-text em { font-style: italic; }
+
+  /* MULTIPLE CHOICE */
+  .mc-options { display: flex; flex-direction: column; gap: 0.4rem; }
+  .mc-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    cursor: pointer;
+    padding: 0.4rem 0.65rem;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    transition: background 0.1s, border-color 0.1s;
+  }
+  .mc-option:hover { background: var(--cream); border-color: var(--border); }
+  .mc-option input[type="radio"] { margin-top: 3px; accent-color: var(--navy); }
+  .mc-option.multi input[type="checkbox"] { margin-top: 3px; accent-color: var(--navy); }
+  .option-letter {
+    font-weight: 600;
+    color: var(--navy-mid);
+    font-size: 0.85rem;
+    min-width: 18px;
+  }
+  .option-text { font-size: 0.9rem; color: var(--text); }
+
+  /* DROPDOWN */
+  .answer-select {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.9rem;
+    font-family: 'Source Sans 3', sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    cursor: pointer;
+    min-width: 220px;
+  }
+  .answer-select:focus { outline: none; border-color: var(--navy-mid); background: #fff; }
+
+  /* FILL-IN SENTENCE */
+  .fill-sentence {
+    font-size: 0.93rem;
+    line-height: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  /* WORD BOX */
+  .word-box {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+    padding: 0.6rem 0.85rem;
+    background: var(--cream-dark);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  .word-pill {
+    background: var(--navy);
+    color: #fff;
+    font-size: 0.82rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  /* SUBMIT BUTTON */
+  .submit-area {
+    text-align: center;
+    padding: 2rem 0;
+  }
+  .submit-btn {
+    background: var(--navy);
+    color: #fff;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 0.85rem 3rem;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .submit-btn:hover { background: var(--navy-mid); }
+  .submit-btn:active { transform: scale(0.98); }
+  .submit-btn:disabled { background: #aaa; cursor: not-allowed; }
+
+  /* RESULTS CARD */
+  .results-card {
+    display: none;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .results-card.visible { display: block; }
+  .score-display {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .score-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-top: 0.5rem;
+  }
+  .score-meta {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+  }
+  .status-msg {
+    margin-top: 1.25rem;
+    font-size: 0.88rem;
+    color: var(--text-light);
+    font-style: italic;
+  }
+  .status-msg.ok { color: var(--correct); font-style: normal; font-weight: 600; }
+  .status-msg.err { color: var(--incorrect); }
+
+  /* UNANSWERED WARNING */
+  .warning-bar {
+    display: none;
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: var(--radius);
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #7a5c00;
+  }
+  .warning-bar.visible { display: block; }
+
+  /* HIGHLIGHT UNANSWERED */
+  .question-row.unanswered { background: #fff9ec; }
+
+  sup { font-size: 0.7em; vertical-align: super; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="subtitle">Reading Explorer Foundations</div>
+  <h1>Test 1 &mdash; Unit 1</h1>
+</header>
+
+<div class="main-wrap">
+
+  <!-- STUDENT INFO -->
+  <div class="info-card">
+    <h2>Student Information</h2>
+    <div class="info-grid">
+      <div class="field-group">
+        <label for="student-name">Full Name</label>
+        <input type="text" id="student-name" placeholder="e.g. Tanaka Yuki" autocomplete="off">
+      </div>
+      <div class="field-group">
+        <label for="student-id">Student Number</label>
+        <input type="text" id="student-id" placeholder="e.g. 20240123" autocomplete="off">
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- LESSON A -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+
+  <!-- PASSAGE 1: A Mysterious Visitor -->
+  <div class="test-section">
+    <div class="section-header">
+      <span class="section-title">A Mysterious Visitor</span>
+      <span class="lesson-tag">Lesson A &bull; Questions 1–5</span>
+    </div>
+    <div class="passage-card">
+      <p><span class="para-label">[A]</span> In October 2017, astronomers in Hawaii saw something surprising. A strange object was moving through the solar system. They had seen many asteroids before, but this was something different. It was long and thin — like a cucumber. The object's speed and direction also showed something surprising. This was an interstellar<sup>1</sup> object — the first ever seen.</p>
+      <p><span class="para-label">[B]</span> The object was named 'Oumuamua — Hawaiian for "visitor from afar." Nobody is sure exactly what it is. The simplest idea is that 'Oumuamua is a strangely shaped piece of rock. Perhaps it was knocked out of a far-off star system. However, astronomers saw that its speed increased after passing the sun. Some scientists therefore suggest a different theory.</p>
+      <p><span class="para-label">[C]</span> "'Oumuamua could be a piece of alien technology," says Professor Abraham Loeb from Harvard University. Loeb believes this could explain the object's long, thin shape, and also its change in speed. Maybe 'Oumuamua was a spaceship that came to explore our solar system. "All possibilities should be considered," says Loeb.</p>
+      <p><span class="para-label">[D]</span> 'Oumuamua can no longer be seen from Earth. But astronomers continue to study the information they got from it. It is still not clear if the object was a large rock, or something else altogether. 'Oumuamua will likely be a mystery for many years to come.</p>
+      <div class="footnotes"><sup>1</sup> If an object is described as <strong>interstellar</strong>, it has traveled between different stars.</div>
+    </div>
+    <div class="directions-bar">Directions: Choose the best answer for each question.</div>
+    <div class="questions-block">
+
+      <div class="question-row" data-q="1">
+        <div class="q-num">1.</div>
+        <div class="q-body">
+          <div class="q-text">This passage ____.</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q1" value="a"><span class="option-letter">a.</span><span class="option-text">discusses types of visitors</span></label>
+            <label class="mc-option"><input type="radio" name="q1" value="b"><span class="option-letter">b.</span><span class="option-text">argues that aliens are real</span></label>
+            <label class="mc-option"><input type="radio" name="q1" value="c"><span class="option-letter">c.</span><span class="option-text">gives the history of alien technology</span></label>
+            <label class="mc-option"><input type="radio" name="q1" value="d"><span class="option-letter">d.</span><span class="option-text">talks about a mysterious asteroid</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="2">
+        <div class="q-num">2.</div>
+        <div class="q-body">
+          <div class="q-text">What does the name <em>'Oumuamua</em> mean?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q2" value="a"><span class="option-letter">a.</span><span class="option-text">visitor from afar</span></label>
+            <label class="mc-option"><input type="radio" name="q2" value="b"><span class="option-letter">b.</span><span class="option-text">Hawaiian visitor</span></label>
+            <label class="mc-option"><input type="radio" name="q2" value="c"><span class="option-letter">c.</span><span class="option-text">piece of rock</span></label>
+            <label class="mc-option"><input type="radio" name="q2" value="d"><span class="option-letter">d.</span><span class="option-text">alien spaceship</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="3">
+        <div class="q-num">3.</div>
+        <div class="q-body">
+          <div class="q-text">In paragraph B, what word or phrase means the same as <em>theory</em>?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q3" value="a"><span class="option-letter">a.</span><span class="option-text">possibility</span></label>
+            <label class="mc-option"><input type="radio" name="q3" value="b"><span class="option-letter">b.</span><span class="option-text">mystery</span></label>
+            <label class="mc-option"><input type="radio" name="q3" value="c"><span class="option-letter">c.</span><span class="option-text">spaceship</span></label>
+            <label class="mc-option"><input type="radio" name="q3" value="d"><span class="option-letter">d.</span><span class="option-text">solar system</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="4">
+        <div class="q-num">4.</div>
+        <div class="q-body">
+          <div class="q-text">What is NOT true about <em>'Oumuamua</em>?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q4" value="a"><span class="option-letter">a.</span><span class="option-text">It is shaped like a cucumber.</span></label>
+            <label class="mc-option"><input type="radio" name="q4" value="b"><span class="option-letter">b.</span><span class="option-text">Its speed increased after passing the sun.</span></label>
+            <label class="mc-option"><input type="radio" name="q4" value="c"><span class="option-letter">c.</span><span class="option-text">It's a piece of rock from Mars.</span></label>
+            <label class="mc-option"><input type="radio" name="q4" value="d"><span class="option-letter">d.</span><span class="option-text">It was first spotted by astronomers in Hawaii.</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="5">
+        <div class="q-num">5.</div>
+        <div class="q-body">
+          <div class="q-text">What is probably true about Professor Abraham Loeb?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q5" value="a"><span class="option-letter">a.</span><span class="option-text">He lives and works in Hawaii.</span></label>
+            <label class="mc-option"><input type="radio" name="q5" value="b"><span class="option-letter">b.</span><span class="option-text">He is not interested in other star systems.</span></label>
+            <label class="mc-option"><input type="radio" name="q5" value="c"><span class="option-letter">c.</span><span class="option-text">He thinks it is possible that aliens exist.</span></label>
+            <label class="mc-option"><input type="radio" name="q5" value="d"><span class="option-letter">d.</span><span class="option-text">He doesn't think 'Oumuamua is an interstellar object.</span></label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PASSAGE 2: Planet Nine — SCAN -->
+  <div class="test-section">
+    <div class="section-header">
+      <span class="section-title">Planet Nine</span>
+      <span class="lesson-tag">Lesson A &bull; Questions 6–10 &bull; Scanning</span>
+    </div>
+    <div class="passage-card">
+      <p><span class="para-label">[A]</span> How many planets are there in our solar system? Earlier generations learned about nine planets that go around the sun: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, and Pluto. Younger generations are learning that there are only eight planets which orbit the sun. (Pluto is no longer considered a planet because it's too small. Now it's called a "dwarf planet.") What will the next generation learn?</p>
+      <p><span class="para-label">[B]</span> Scientists are discovering more about our solar system. But some mysteries remain. For example, are there any other planets out there? One group of scientists believes the answer is <em>yes</em>. They think that there <em>is</em> maybe another planet in our solar system. They haven't seen it yet, but they have begun searching for it with the world's strongest telescopes.</p>
+      <p><span class="para-label">[C]</span> What gave them this idea? To begin with, scientists look at the orbits, or circular paths, of planets and other space objects, such as asteroids. Beyond the dwarf planet Pluto, they noticed some objects that were moving in strange orbits. They wondered what caused those strange paths. One theory was that a planet caused them, a <em>new</em> planet. Based on their calculations, this planet could be the size of Neptune and travel around the sun once every 10,000 to 20,000 years. Scientists named this possible planet "Planet Nine." It will only get a real name if it is actually discovered. Until then, Planet Nine will remain a mystery.</p>
+    </div>
+    <div class="directions-bar">Directions: Scan the passage to answer the questions. Choose from the dropdown.</div>
+    <div class="questions-block">
+
+      <div class="question-row" data-q="6">
+        <div class="q-num">6.</div>
+        <div class="q-body">
+          <div class="q-text">Has Planet Nine been discovered?</div>
+          <select class="answer-select" id="q6">
+            <option value="">— select —</option>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+            <option value="Pluto">Pluto</option>
+            <option value="Neptune">Neptune</option>
+            <option value="Are there any other planets out there?">Are there any other planets out there?</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="7">
+        <div class="q-num">7.</div>
+        <div class="q-body">
+          <div class="q-text">Which planet is considered a dwarf planet?</div>
+          <select class="answer-select" id="q7">
+            <option value="">— select —</option>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+            <option value="Pluto">Pluto</option>
+            <option value="Neptune">Neptune</option>
+            <option value="Are there any other planets out there?">Are there any other planets out there?</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="8">
+        <div class="q-num">8.</div>
+        <div class="q-body">
+          <div class="q-text">What does the passage say is still a mystery to scientists?</div>
+          <select class="answer-select" id="q8">
+            <option value="">— select —</option>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+            <option value="Pluto">Pluto</option>
+            <option value="Neptune">Neptune</option>
+            <option value="Are there any other planets out there?">Are there any other planets out there?</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="9">
+        <div class="q-num">9.</div>
+        <div class="q-body">
+          <div class="q-text">Which planet is Planet Nine similar to in size?</div>
+          <select class="answer-select" id="q9">
+            <option value="">— select —</option>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+            <option value="Pluto">Pluto</option>
+            <option value="Neptune">Neptune</option>
+            <option value="Are there any other planets out there?">Are there any other planets out there?</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="10">
+        <div class="q-num">10.</div>
+        <div class="q-body">
+          <div class="q-text">Do some scientists think that there are still undiscovered planets in our solar system?</div>
+          <select class="answer-select" id="q10">
+            <option value="">— select —</option>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+            <option value="Pluto">Pluto</option>
+            <option value="Neptune">Neptune</option>
+            <option value="Are there any other planets out there?">Are there any other planets out there?</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PASSAGE 3: Planet Nine — MC -->
+  <div class="test-section">
+    <div class="section-header">
+      <span class="section-title">Planet Nine</span>
+      <span class="lesson-tag">Lesson A &bull; Questions 11–15</span>
+    </div>
+    <div class="directions-bar" style="border-top:1px solid var(--border); border-radius: var(--radius) var(--radius) 0 0;">Directions: Choose the best answer for each question.</div>
+    <div class="questions-block">
+
+      <div class="question-row" data-q="11">
+        <div class="q-num">11.</div>
+        <div class="q-body">
+          <div class="q-text">This passage ____.</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q11" value="a"><span class="option-letter">a.</span><span class="option-text">argues that there are exactly nine planets in the solar system</span></label>
+            <label class="mc-option"><input type="radio" name="q11" value="b"><span class="option-letter">b.</span><span class="option-text">explains how Planet Nine was discovered</span></label>
+            <label class="mc-option"><input type="radio" name="q11" value="c"><span class="option-letter">c.</span><span class="option-text">suggests there may be a planet we haven't discovered yet</span></label>
+            <label class="mc-option"><input type="radio" name="q11" value="d"><span class="option-letter">d.</span><span class="option-text">tells the story of an astronaut's experience</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="12">
+        <div class="q-num">12.</div>
+        <div class="q-body">
+          <div class="q-text">Which statement is true?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q12" value="a"><span class="option-letter">a.</span><span class="option-text">Younger generations are learning that there are nine planets.</span></label>
+            <label class="mc-option"><input type="radio" name="q12" value="b"><span class="option-letter">b.</span><span class="option-text">Younger generations have learned about the discovery of Planet Nine.</span></label>
+            <label class="mc-option"><input type="radio" name="q12" value="c"><span class="option-letter">c.</span><span class="option-text">Older generations learned that there were nine planets.</span></label>
+            <label class="mc-option"><input type="radio" name="q12" value="d"><span class="option-letter">d.</span><span class="option-text">Older generations learned about Planet Nine.</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="13">
+        <div class="q-num">13.</div>
+        <div class="q-body">
+          <div class="q-text">What happened first?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q13" value="a"><span class="option-letter">a.</span><span class="option-text">Scientists began looking for Planet Nine with the world's strongest telescopes.</span></label>
+            <label class="mc-option"><input type="radio" name="q13" value="b"><span class="option-letter">b.</span><span class="option-text">Scientists noticed the strange movement of space objects.</span></label>
+            <label class="mc-option"><input type="radio" name="q13" value="c"><span class="option-letter">c.</span><span class="option-text">Scientists worked out the size of a possible ninth planet.</span></label>
+            <label class="mc-option"><input type="radio" name="q13" value="d"><span class="option-letter">d.</span><span class="option-text">Scientists named the possible planet "Planet Nine."</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="14">
+        <div class="q-num">14.</div>
+        <div class="q-body">
+          <div class="q-text">What word from paragraph C has a similar meaning to "not normal"?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q14" value="a"><span class="option-letter">a.</span><span class="option-text">circular</span></label>
+            <label class="mc-option"><input type="radio" name="q14" value="b"><span class="option-letter">b.</span><span class="option-text">strange</span></label>
+            <label class="mc-option"><input type="radio" name="q14" value="c"><span class="option-letter">c.</span><span class="option-text">beyond</span></label>
+            <label class="mc-option"><input type="radio" name="q14" value="d"><span class="option-letter">d.</span><span class="option-text">solar</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="15">
+        <div class="q-num">15.</div>
+        <div class="q-body">
+          <div class="q-text">What does <em>then</em> refer to in the last sentence?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q15" value="a"><span class="option-letter">a.</span><span class="option-text">when Neptune travels around the sun</span></label>
+            <label class="mc-option"><input type="radio" name="q15" value="b"><span class="option-letter">b.</span><span class="option-text">when scientists give the planet a real name</span></label>
+            <label class="mc-option"><input type="radio" name="q15" value="c"><span class="option-letter">c.</span><span class="option-text">when Planet Nine is discovered</span></label>
+            <label class="mc-option"><input type="radio" name="q15" value="d"><span class="option-letter">d.</span><span class="option-text">when scientists study Neptune in more detail</span></label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LESSON A — VOCABULARY -->
+  <div class="test-section">
+    <div class="section-header">
+      <span class="section-title">Vocabulary</span>
+      <span class="lesson-tag">Lesson A &bull; Questions 16–23</span>
+    </div>
+    <div class="directions-bar" style="border-top:1px solid var(--border); border-radius: var(--radius) var(--radius) 0 0;">Directions: Complete each sentence with the correct word from the box.</div>
+    <div class="questions-block">
+
+      <div class="question-row" data-q="16">
+        <div class="q-num">16.</div>
+        <div class="q-body">
+          <div class="word-box"><span class="word-pill">explore</span><span class="word-pill">pass</span><span class="word-pill">speed</span></div>
+          <div class="fill-sentence">
+            He dreamt of being an astronaut, so he could
+            <select class="answer-select" id="q16">
+              <option value="">— select —</option>
+              <option value="explore">explore</option>
+              <option value="pass">pass</option>
+              <option value="speed">speed</option>
+            </select>
+            space.
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="17">
+        <div class="q-num">17.</div>
+        <div class="q-body">
+          <div class="fill-sentence">
+            In 2134, Halley's Comet will
+            <select class="answer-select" id="q17">
+              <option value="">— select —</option>
+              <option value="explore">explore</option>
+              <option value="pass">pass</option>
+              <option value="speed">speed</option>
+            </select>
+            very close to Earth and will appear much brighter.
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="18">
+        <div class="q-num">18.</div>
+        <div class="q-body">
+          <div class="fill-sentence">
+            That spaceship can fly faster than the
+            <select class="answer-select" id="q18">
+              <option value="">— select —</option>
+              <option value="explore">explore</option>
+              <option value="pass">pass</option>
+              <option value="speed">speed</option>
+            </select>
+            of sound.
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="19" style="flex-direction:column;">
+        <div style="display:flex;gap:1rem;align-items:flex-start;">
+          <div class="q-num">19.</div>
+          <div class="q-body">
+            <div class="directions-bar" style="border:1px solid var(--border); border-radius:4px; margin-bottom:0.75rem; font-size:0.82rem;">Match each sentence starter with the correct ending: &nbsp;<strong>a.</strong> <em>maybe</em> it was built by aliens. &nbsp; <strong>b.</strong> they look <em>strange</em>. &nbsp; <strong>c.</strong> you nearly <em>knocked</em> me over!</div>
+            <div class="fill-sentence">
+              Watch where you're going;
+              <select class="answer-select" id="q19">
+                <option value="">— select —</option>
+                <option value="a">a. maybe it was built by aliens.</option>
+                <option value="b">b. they look strange.</option>
+                <option value="c">c. you nearly knocked me over!</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="20">
+        <div class="q-num">20.</div>
+        <div class="q-body">
+          <div class="fill-sentence">
+            Those clouds in the sky don't look normal;
+            <select class="answer-select" id="q20">
+              <option value="">— select —</option>
+              <option value="a">a. maybe it was built by aliens.</option>
+              <option value="b">b. they look strange.</option>
+              <option value="c">c. you nearly knocked me over!</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="21">
+        <div class="q-num">21.</div>
+        <div class="q-body">
+          <div class="fill-sentence">
+            No one knows where it came from;
+            <select class="answer-select" id="q21">
+              <option value="">— select —</option>
+              <option value="a">a. maybe it was built by aliens.</option>
+              <option value="b">b. they look strange.</option>
+              <option value="c">c. you nearly knocked me over!</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="22">
+        <div class="q-num">22.</div>
+        <div class="q-body">
+          <div class="q-text">Which words mean the same as <em>thin</em>? (Choose two or more)</div>
+          <div class="mc-options">
+            <label class="mc-option multi"><input type="checkbox" name="q22" value="a"><span class="option-letter">a.</span><span class="option-text">skinny</span></label>
+            <label class="mc-option multi"><input type="checkbox" name="q22" value="b"><span class="option-letter">b.</span><span class="option-text">slim</span></label>
+            <label class="mc-option multi"><input type="checkbox" name="q22" value="c"><span class="option-letter">c.</span><span class="option-text">long</span></label>
+            <label class="mc-option multi"><input type="checkbox" name="q22" value="d"><span class="option-letter">d.</span><span class="option-text">thick</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="23">
+        <div class="q-num">23.</div>
+        <div class="q-body">
+          <div class="q-text">Which of these are examples of <em>technology</em>? (Choose two or more)</div>
+          <div class="mc-options">
+            <label class="mc-option multi"><input type="checkbox" name="q23" value="a"><span class="option-letter">a.</span><span class="option-text">animals</span></label>
+            <label class="mc-option multi"><input type="checkbox" name="q23" value="b"><span class="option-letter">b.</span><span class="option-text">computers</span></label>
+            <label class="mc-option multi"><input type="checkbox" name="q23" value="c"><span class="option-letter">c.</span><span class="option-text">a language</span></label>
+            <label class="mc-option multi"><input type="checkbox" name="q23" value="d"><span class="option-letter">d.</span><span class="option-text">a camera</span></label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- LESSON B -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+
+  <!-- PASSAGE 4: The Lost City of Atlantis -->
+  <div class="test-section">
+    <div class="section-header">
+      <span class="section-title">The Lost City of Atlantis</span>
+      <span class="lesson-tag">Lesson B &bull; Questions 24–28</span>
+    </div>
+    <div class="passage-card">
+      <p><span class="para-label">[A]</span> Most people have heard the story of the lost city of Atlantis. But is any part of the story true?</p>
+      <p><span class="para-label">[B]</span> Over two thousand years ago, the Greek writer Plato wrote about Atlantis, an island in the Atlantic Ocean. The island's people were very rich. They built a big city with many great buildings. But the people became greedy — they had many things, but they still wanted more. So the gods became angry. Earthquakes<sup>1</sup> and large waves began to strike the island. Finally, Atlantis sank into the sea.</p>
+      <p><span class="para-label">[C]</span> Many explorers have looked for Atlantis. In 2004, explorer Robert Sarmast reported finding the remains<sup>2</sup> of a city under the sea near Cyprus. However, Sarmast and other scientists later realized the structures he found under the sea were natural, not man-made. Mark Adams, author of the 2016 book <em>Meet Me in Atlantis</em> believes the city was in Morocco. Plato wrote about red and black stone circles around the city. Adams found similar red and black stones in the desert there, very near the Atlantic Ocean.</p>
+      <p><span class="para-label">[D]</span> Most people, however, think Atlantis is simply a story. The purpose of the story may be to teach people not to be greedy. Richard Ellis also wrote a book about Atlantis in 1999. He says "there is not a piece of solid evidence"<sup>3</sup> for a real Atlantis.</p>
+      <p><span class="para-label">[E]</span> So was the island real or not? We only know one thing: The mystery of Atlantis will be with us for a long time.</p>
+      <div class="footnotes">
+        <sup>1</sup> An <strong>earthquake</strong> is the shaking of the ground caused by movement of the Earth.<br>
+        <sup>2</sup> The <strong>remains</strong> of something are the parts that are left after most of it is gone.<br>
+        <sup>3</sup> <strong>Evidence</strong> is anything that makes you believe that something is true.
+      </div>
+    </div>
+    <div class="directions-bar">Directions: Choose the best answer for each question.</div>
+    <div class="questions-block">
+
+      <div class="question-row" data-q="24">
+        <div class="q-num">24.</div>
+        <div class="q-body">
+          <div class="q-text">What word or phrase does NOT describe the people of Atlantis according to the passage?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q24" value="a"><span class="option-letter">a.</span><span class="option-text">greedy</span></label>
+            <label class="mc-option"><input type="radio" name="q24" value="b"><span class="option-letter">b.</span><span class="option-text">had lots of money</span></label>
+            <label class="mc-option"><input type="radio" name="q24" value="c"><span class="option-letter">c.</span><span class="option-text">built large buildings</span></label>
+            <label class="mc-option"><input type="radio" name="q24" value="d"><span class="option-letter">d.</span><span class="option-text">angry</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="25">
+        <div class="q-num">25.</div>
+        <div class="q-body">
+          <div class="q-text">In paragraph B, what does <em>sank</em> mean?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q25" value="a"><span class="option-letter">a.</span><span class="option-text">to clean something</span></label>
+            <label class="mc-option"><input type="radio" name="q25" value="b"><span class="option-letter">b.</span><span class="option-text">to swim across</span></label>
+            <label class="mc-option"><input type="radio" name="q25" value="c"><span class="option-letter">c.</span><span class="option-text">to drink a lot</span></label>
+            <label class="mc-option"><input type="radio" name="q25" value="d"><span class="option-letter">d.</span><span class="option-text">to go down</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="26">
+        <div class="q-num">26.</div>
+        <div class="q-body">
+          <div class="q-text">Which sentence is true?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q26" value="a"><span class="option-letter">a.</span><span class="option-text">Robert Sarmast found the lost city of Atlantis.</span></label>
+            <label class="mc-option"><input type="radio" name="q26" value="b"><span class="option-letter">b.</span><span class="option-text">Richard Ellis wrote a book about Atlantis.</span></label>
+            <label class="mc-option"><input type="radio" name="q26" value="c"><span class="option-letter">c.</span><span class="option-text">Greek gods are from Atlantis.</span></label>
+            <label class="mc-option"><input type="radio" name="q26" value="d"><span class="option-letter">d.</span><span class="option-text">Plato lived in Atlantis.</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="27">
+        <div class="q-num">27.</div>
+        <div class="q-body">
+          <div class="q-text">The following sentence would be best placed at the end of which paragraph? <em>All its people drowned.</em></div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q27" value="a"><span class="option-letter">a.</span><span class="option-text">Paragraph A</span></label>
+            <label class="mc-option"><input type="radio" name="q27" value="b"><span class="option-letter">b.</span><span class="option-text">Paragraph B</span></label>
+            <label class="mc-option"><input type="radio" name="q27" value="c"><span class="option-letter">c.</span><span class="option-text">Paragraph C</span></label>
+            <label class="mc-option"><input type="radio" name="q27" value="d"><span class="option-letter">d.</span><span class="option-text">Paragraph D</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="28">
+        <div class="q-num">28.</div>
+        <div class="q-body">
+          <div class="q-text">Which sentence does the author probably agree with?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q28" value="a"><span class="option-letter">a.</span><span class="option-text">Scientists now know that Atlantis was a real place.</span></label>
+            <label class="mc-option"><input type="radio" name="q28" value="b"><span class="option-letter">b.</span><span class="option-text">The city of Atlantis is no longer a mystery.</span></label>
+            <label class="mc-option"><input type="radio" name="q28" value="c"><span class="option-letter">c.</span><span class="option-text">Atlantis continues to be interesting to many people.</span></label>
+            <label class="mc-option"><input type="radio" name="q28" value="d"><span class="option-letter">d.</span><span class="option-text">Atlantis was almost definitely in Morocco.</span></label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PASSAGE 5: Jupiter's Most Explosive Moon — SKIM -->
+  <div class="test-section">
+    <div class="section-header">
+      <span class="section-title">Jupiter's Most Explosive Moon: Io</span>
+      <span class="lesson-tag">Lesson B &bull; Questions 29–33 &bull; Skimming</span>
+    </div>
+    <div class="passage-card">
+      <p><span class="para-label">[A]</span> Jupiter, the fifth planet from the sun, is a giant planet with many moons. One of Jupiter's best-known moons is Io (pronounced 'eye-oh'). Io is famous for its large size as well as its volcanoes.<sup>1</sup> Many think Io has more active volcanoes than any other place in the solar system. Scientists can see the volcanoes from 390 million miles away by using Earth's strongest telescopes.</p>
+      <p><span class="para-label">[B]</span> Scientists want to know why Io has so many volcanoes. Is it because of Jupiter's gravity? Or do Jupiter's other moons somehow affect it? Scientists are also thinking about the center of Io. Maybe there are large pools of hot, liquid rock underground. Perhaps pressure builds up around these pools until they shoot out of the volcanoes.</p>
+      <p><span class="para-label">[C]</span> Scientists have taken a closer look at Io by launching spacecraft on various missions over the years: Pioneer 11 as well as Voyager 1 and Voyager 2 in the 1970s; Ulysses and Galileo in the 1990s, Cassini and New Horizons in the early 2000s. NASA<sup>2</sup> sent a spacecraft, <em>Juno</em>, to Jupiter in 2011. It is expected to orbit the planet for ten years, picking up images and information about Io and Jupiter's other moons. Perhaps with this latest information, scientists will get a better idea of why Io is so explosive.</p>
+      <div class="footnotes">
+        <sup>1</sup> <strong>Volcanoes</strong> are mountains that throw out hot, liquid rock.<br>
+        <sup>2</sup> <strong>NASA</strong> stands for National Aeronautics and Space Administration, a US government agency that does space research.
+      </div>
+    </div>
+    <div class="directions-bar">Directions: Skim the passage to answer the questions. Choose the best answer.</div>
+    <div class="questions-block">
+
+      <div class="question-row" data-q="29">
+        <div class="q-num">29.</div>
+        <div class="q-body">
+          <div class="q-text">What is this passage mainly about?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q29" value="a"><span class="option-letter">a.</span><span class="option-text">one of Jupiter's moons and its volcanoes</span></label>
+            <label class="mc-option"><input type="radio" name="q29" value="b"><span class="option-letter">b.</span><span class="option-text">the age of one of Jupiter's moons: Io</span></label>
+            <label class="mc-option"><input type="radio" name="q29" value="c"><span class="option-letter">c.</span><span class="option-text">the amount of time it takes for Io to orbit Jupiter</span></label>
+            <label class="mc-option"><input type="radio" name="q29" value="d"><span class="option-letter">d.</span><span class="option-text">one of the reasons NASA sends astronauts to Jupiter</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="30">
+        <div class="q-num">30.</div>
+        <div class="q-body">
+          <div class="q-text">What is paragraph A mainly about?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q30" value="a"><span class="option-letter">a.</span><span class="option-text">where Io is located</span></label>
+            <label class="mc-option"><input type="radio" name="q30" value="b"><span class="option-letter">b.</span><span class="option-text">why Io is famous</span></label>
+            <label class="mc-option"><input type="radio" name="q30" value="c"><span class="option-letter">c.</span><span class="option-text">when Io was discovered</span></label>
+            <label class="mc-option"><input type="radio" name="q30" value="d"><span class="option-letter">d.</span><span class="option-text">who discovered Io</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="31">
+        <div class="q-num">31.</div>
+        <div class="q-body">
+          <div class="q-text">Which section gives general details about the planet Jupiter?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q31" value="a"><span class="option-letter">a.</span><span class="option-text">Paragraph A</span></label>
+            <label class="mc-option"><input type="radio" name="q31" value="b"><span class="option-letter">b.</span><span class="option-text">Paragraph B</span></label>
+            <label class="mc-option"><input type="radio" name="q31" value="c"><span class="option-letter">c.</span><span class="option-text">Paragraph C</span></label>
+            <label class="mc-option"><input type="radio" name="q31" value="d"><span class="option-letter">d.</span><span class="option-text">the footnote</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="32">
+        <div class="q-num">32.</div>
+        <div class="q-body">
+          <div class="q-text">Which section describes missions to outer space?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q32" value="a"><span class="option-letter">a.</span><span class="option-text">Paragraph A</span></label>
+            <label class="mc-option"><input type="radio" name="q32" value="b"><span class="option-letter">b.</span><span class="option-text">Paragraph B</span></label>
+            <label class="mc-option"><input type="radio" name="q32" value="c"><span class="option-letter">c.</span><span class="option-text">Paragraph C</span></label>
+            <label class="mc-option"><input type="radio" name="q32" value="d"><span class="option-letter">d.</span><span class="option-text">the footnote</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="33">
+        <div class="q-num">33.</div>
+        <div class="q-body">
+          <div class="q-text">Which section is mainly about the reason Io is so explosive?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q33" value="a"><span class="option-letter">a.</span><span class="option-text">Paragraph A</span></label>
+            <label class="mc-option"><input type="radio" name="q33" value="b"><span class="option-letter">b.</span><span class="option-text">Paragraph B</span></label>
+            <label class="mc-option"><input type="radio" name="q33" value="c"><span class="option-letter">c.</span><span class="option-text">Paragraph C</span></label>
+            <label class="mc-option"><input type="radio" name="q33" value="d"><span class="option-letter">d.</span><span class="option-text">the footnote</span></label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PASSAGE 6: Jupiter MC -->
+  <div class="test-section">
+    <div class="section-header">
+      <span class="section-title">Jupiter's Most Explosive Moon: Io</span>
+      <span class="lesson-tag">Lesson B &bull; Questions 34–38</span>
+    </div>
+    <div class="directions-bar" style="border-top:1px solid var(--border); border-radius: var(--radius) var(--radius) 0 0;">Directions: Choose the best answer for each question.</div>
+    <div class="questions-block">
+
+      <div class="question-row" data-q="34">
+        <div class="q-num">34.</div>
+        <div class="q-body">
+          <div class="q-text">What characteristic of Io does this passage focus on?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q34" value="a"><span class="option-letter">a.</span><span class="option-text">how big it is</span></label>
+            <label class="mc-option"><input type="radio" name="q34" value="b"><span class="option-letter">b.</span><span class="option-text">how it has many volcanoes</span></label>
+            <label class="mc-option"><input type="radio" name="q34" value="c"><span class="option-letter">c.</span><span class="option-text">how wide its orbit is</span></label>
+            <label class="mc-option"><input type="radio" name="q34" value="d"><span class="option-letter">d.</span><span class="option-text">how long scientists have been studying it</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="35">
+        <div class="q-num">35.</div>
+        <div class="q-body">
+          <div class="q-text">According to Paragraph A, which of the following is probably true?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q35" value="a"><span class="option-letter">a.</span><span class="option-text">No other place in the solar system has volcanoes.</span></label>
+            <label class="mc-option"><input type="radio" name="q35" value="b"><span class="option-letter">b.</span><span class="option-text">You can't see Io's volcanoes from Earth with regular telescopes.</span></label>
+            <label class="mc-option"><input type="radio" name="q35" value="c"><span class="option-letter">c.</span><span class="option-text">Io is smaller than Jupiter's other moons.</span></label>
+            <label class="mc-option"><input type="radio" name="q35" value="d"><span class="option-letter">d.</span><span class="option-text">Everyone in the world is familiar with Io.</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="36">
+        <div class="q-num">36.</div>
+        <div class="q-body">
+          <div class="q-text">Which word or phrase from the passage means <em>to come out in a powerful way</em>?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q36" value="a"><span class="option-letter">a.</span><span class="option-text">orbit</span></label>
+            <label class="mc-option"><input type="radio" name="q36" value="b"><span class="option-letter">b.</span><span class="option-text">erupt</span></label>
+            <label class="mc-option"><input type="radio" name="q36" value="c"><span class="option-letter">c.</span><span class="option-text">pick up images</span></label>
+            <label class="mc-option"><input type="radio" name="q36" value="d"><span class="option-letter">d.</span><span class="option-text">to lie under the surface</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="37">
+        <div class="q-num">37.</div>
+        <div class="q-body">
+          <div class="q-text">Which of the following is the name of a spacecraft?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q37" value="a"><span class="option-letter">a.</span><span class="option-text">Io</span></label>
+            <label class="mc-option"><input type="radio" name="q37" value="b"><span class="option-letter">b.</span><span class="option-text">NASA</span></label>
+            <label class="mc-option"><input type="radio" name="q37" value="c"><span class="option-letter">c.</span><span class="option-text">Jupiter</span></label>
+            <label class="mc-option"><input type="radio" name="q37" value="d"><span class="option-letter">d.</span><span class="option-text">Ulysses</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="38">
+        <div class="q-num">38.</div>
+        <div class="q-body">
+          <div class="q-text">What do we learn about <em>Juno</em> in paragraph C?</div>
+          <div class="mc-options">
+            <label class="mc-option"><input type="radio" name="q38" value="a"><span class="option-letter">a.</span><span class="option-text">It will take photos of Jupiter and Io.</span></label>
+            <label class="mc-option"><input type="radio" name="q38" value="b"><span class="option-letter">b.</span><span class="option-text">It returned to Earth in 2011.</span></label>
+            <label class="mc-option"><input type="radio" name="q38" value="c"><span class="option-letter">c.</span><span class="option-text">It will orbit around Io.</span></label>
+            <label class="mc-option"><input type="radio" name="q38" value="d"><span class="option-letter">d.</span><span class="option-text">It will enter Io's volcanoes.</span></label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LESSON B — VOCABULARY -->
+  <div class="test-section">
+    <div class="section-header">
+      <span class="section-title">Vocabulary</span>
+      <span class="lesson-tag">Lesson B &bull; Questions 39–46</span>
+    </div>
+    <div class="directions-bar" style="border-top:1px solid var(--border); border-radius: var(--radius) var(--radius) 0 0;">Directions: Complete each sentence with the correct form of a word from the box.</div>
+    <div class="questions-block">
+
+      <div class="question-row" data-q="39">
+        <div class="q-num">39.</div>
+        <div class="q-body">
+          <div class="word-box"><span class="word-pill">natural</span><span class="word-pill">finally</span><span class="word-pill">strike</span></div>
+          <div class="fill-sentence">
+            After searching for years, he
+            <select class="answer-select" id="q39">
+              <option value="">— select —</option>
+              <option value="finally">finally</option>
+              <option value="natural">natural</option>
+              <option value="struck">struck</option>
+            </select>
+            found what he was looking for.
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="40">
+        <div class="q-num">40.</div>
+        <div class="q-body">
+          <div class="fill-sentence">
+            It is a
+            <select class="answer-select" id="q40">
+              <option value="">— select —</option>
+              <option value="finally">finally</option>
+              <option value="natural">natural</option>
+              <option value="struck">struck</option>
+            </select>
+            part of life that some animals eat other animals.
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="41">
+        <div class="q-num">41.</div>
+        <div class="q-body">
+          <div class="fill-sentence">
+            Stay indoors when it's raining to avoid getting
+            <select class="answer-select" id="q41">
+              <option value="">— select —</option>
+              <option value="finally">finally</option>
+              <option value="natural">natural</option>
+              <option value="struck">struck</option>
+            </select>
+            by lightning.
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="42">
+        <div class="q-num">42.</div>
+        <div class="q-body">
+          <div class="q-text">If you take a <em>piece</em> of something, you take ____ of it. (Choose two or more)</div>
+          <div class="mc-options">
+            <label class="mc-option multi"><input type="checkbox" name="q42" value="a"><span class="option-letter">a.</span><span class="option-text">all</span></label>
+            <label class="mc-option multi"><input type="checkbox" name="q42" value="b"><span class="option-letter">b.</span><span class="option-text">part</span></label>
+            <label class="mc-option multi"><input type="checkbox" name="q42" value="c"><span class="option-letter">c.</span><span class="option-text">a bit</span></label>
+            <label class="mc-option multi"><input type="checkbox" name="q42" value="d"><span class="option-letter">d.</span><span class="option-text">most</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="43">
+        <div class="q-num">43.</div>
+        <div class="q-body">
+          <div class="q-text">An example of something that <em>sinks</em> in water is a ____. (Choose two or more)</div>
+          <div class="mc-options">
+            <label class="mc-option multi"><input type="checkbox" name="q43" value="a"><span class="option-letter">a.</span><span class="option-text">rock</span></label>
+            <label class="mc-option multi"><input type="checkbox" name="q43" value="b"><span class="option-letter">b.</span><span class="option-text">boat</span></label>
+            <label class="mc-option multi"><input type="checkbox" name="q43" value="c"><span class="option-letter">c.</span><span class="option-text">bag of coins</span></label>
+            <label class="mc-option multi"><input type="checkbox" name="q43" value="d"><span class="option-letter">d.</span><span class="option-text">piece of wood</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="44" style="flex-direction:column;">
+        <div style="display:flex;gap:1rem;align-items:flex-start;">
+          <div class="q-num">44.</div>
+          <div class="q-body">
+            <div class="directions-bar" style="border:1px solid var(--border); border-radius:4px; margin-bottom:0.75rem; font-size:0.82rem;">Match each sentence starter with the correct ending: &nbsp;<strong>a.</strong> you <em>report</em> it. &nbsp; <strong>b.</strong> you can't find them. &nbsp; <strong>c.</strong> she did it on <em>purpose</em>.</div>
+            <div class="fill-sentence">
+              It wasn't an accident;
+              <select class="answer-select" id="q44">
+                <option value="">— select —</option>
+                <option value="a">a. you report it.</option>
+                <option value="b">b. you can't find them.</option>
+                <option value="c">c. she did it on purpose.</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="45">
+        <div class="q-num">45.</div>
+        <div class="q-body">
+          <div class="fill-sentence">
+            If you want to describe something you saw,
+            <select class="answer-select" id="q45">
+              <option value="">— select —</option>
+              <option value="a">a. you report it.</option>
+              <option value="b">b. you can't find them.</option>
+              <option value="c">c. she did it on purpose.</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-row" data-q="46">
+        <div class="q-num">46.</div>
+        <div class="q-body">
+          <div class="fill-sentence">
+            If your keys are <em>lost</em>,
+            <select class="answer-select" id="q46">
+              <option value="">— select —</option>
+              <option value="a">a. you report it.</option>
+              <option value="b">b. you can't find them.</option>
+              <option value="c">c. she did it on purpose.</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="warning-bar" id="warning-bar">Please answer all questions before submitting.</div>
+  <div class="submit-area">
+    <button class="submit-btn" id="submit-btn" onclick="submitTest()">Submit Test</button>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results-card" id="results-card">
+    <div class="score-display" id="score-display"></div>
+    <div class="score-label">out of 46</div>
+    <div class="score-meta" id="score-meta"></div>
+    <div class="status-msg" id="status-msg"></div>
+  </div>
+
+</div>
+
+<script>
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyY4ONUSadCa2P1V0TZ3r5qyfAmR46vlhJxAW4aeHuvb6N1fH11sspFNMjfnO6OmNrh/exec';
+
+const ANSWERS = {
+  q1:  {type:'radio',  correct:'d'},
+  q2:  {type:'radio',  correct:'a'},
+  q3:  {type:'radio',  correct:'a'},
+  q4:  {type:'radio',  correct:'c'},
+  q5:  {type:'radio',  correct:'c'},
+  q6:  {type:'select', correct:'No'},
+  q7:  {type:'select', correct:'Pluto'},
+  q8:  {type:'select', correct:'Are there any other planets out there?'},
+  q9:  {type:'select', correct:'Neptune'},
+  q10: {type:'select', correct:'Yes'},
+  q11: {type:'radio',  correct:'c'},
+  q12: {type:'radio',  correct:'c'},
+  q13: {type:'radio',  correct:'b'},
+  q14: {type:'radio',  correct:'b'},
+  q15: {type:'radio',  correct:'c'},
+  q16: {type:'select', correct:'explore'},
+  q17: {type:'select', correct:'pass'},
+  q18: {type:'select', correct:'speed'},
+  q19: {type:'select', correct:'c'},
+  q20: {type:'select', correct:'b'},
+  q21: {type:'select', correct:'a'},
+  q22: {type:'multi',  correct:['a','b']},
+  q23: {type:'multi',  correct:['b','d']},
+  q24: {type:'radio',  correct:'d'},
+  q25: {type:'radio',  correct:'d'},
+  q26: {type:'radio',  correct:'b'},
+  q27: {type:'radio',  correct:'b'},
+  q28: {type:'radio',  correct:'c'},
+  q29: {type:'radio',  correct:'a'},
+  q30: {type:'radio',  correct:'b'},
+  q31: {type:'radio',  correct:'a'},
+  q32: {type:'radio',  correct:'c'},
+  q33: {type:'radio',  correct:'b'},
+  q34: {type:'radio',  correct:'b'},
+  q35: {type:'radio',  correct:'b'},
+  q36: {type:'radio',  correct:'b'},
+  q37: {type:'radio',  correct:'d'},
+  q38: {type:'radio',  correct:'a'},
+  q39: {type:'select', correct:'finally'},
+  q40: {type:'select', correct:'natural'},
+  q41: {type:'select', correct:'struck'},
+  q42: {type:'multi',  correct:['b','c']},
+  q43: {type:'multi',  correct:['a','c']},
+  q44: {type:'select', correct:'c'},
+  q45: {type:'select', correct:'a'},
+  q46: {type:'select', correct:'b'},
+};
+
+function getAnswer(qid) {
+  const info = ANSWERS[qid];
+  if (!info) return null;
+  if (info.type === 'radio') {
+    const checked = document.querySelector(`input[name="${qid}"]:checked`);
+    return checked ? checked.value : null;
+  }
+  if (info.type === 'select') {
+    const sel = document.getElementById(qid);
+    return sel && sel.value ? sel.value : null;
+  }
+  if (info.type === 'multi') {
+    const boxes = document.querySelectorAll(`input[name="${qid}"]:checked`);
+    const vals = Array.from(boxes).map(b => b.value).sort();
+    return vals.length > 0 ? vals : null;
+  }
+  return null;
+}
+
+function getRawAnswer(qid) {
+  const ans = getAnswer(qid);
+  if (ans === null) return '';
+  if (Array.isArray(ans)) return ans.join('+');
+  return ans;
+}
+
+function isCorrect(qid) {
+  const info = ANSWERS[qid];
+  const ans = getAnswer(qid);
+  if (ans === null) return false;
+  if (info.type === 'multi') {
+    const correct = [...info.correct].sort();
+    return JSON.stringify(ans) === JSON.stringify(correct);
+  }
+  return ans === info.correct;
+}
+
+function submitTest() {
+  const name = document.getElementById('student-name').value.trim();
+  const studentId = document.getElementById('student-id').value.trim();
+
+  if (!name || !studentId) {
+    alert('Please enter your name and student number before submitting.');
+    return;
+  }
+
+  const unanswered = [];
+  for (const qid of Object.keys(ANSWERS)) {
+    if (getAnswer(qid) === null) unanswered.push(qid);
+  }
+
+  const rows = document.querySelectorAll('.question-row[data-q]');
+  rows.forEach(row => {
+    const qnum = 'q' + row.getAttribute('data-q');
+    row.classList.toggle('unanswered', unanswered.includes(qnum));
+  });
+
+  if (unanswered.length > 0) {
+    const wb = document.getElementById('warning-bar');
+    wb.textContent = `Please answer all questions. ${unanswered.length} question(s) remain unanswered.`;
+    wb.classList.add('visible');
+    document.querySelector('.question-row.unanswered').scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  document.getElementById('warning-bar').classList.remove('visible');
+
+  let score = 0;
+  const responses = {};
+  for (const qid of Object.keys(ANSWERS)) {
+    const correct = isCorrect(qid);
+    if (correct) score++;
+    responses[qid] = {
+      answer: getRawAnswer(qid),
+      correct: correct ? 1 : 0
+    };
+  }
+
+  const pct = Math.round((score / 46) * 100);
+  const timestamp = new Date().toLocaleString('en-GB');
+
+  document.getElementById('score-display').textContent = score;
+  document.getElementById('score-meta').innerHTML =
+    `<strong>${name}</strong> &bull; Student No. ${studentId}<br>${pct}% &bull; ${timestamp}`;
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting…';
+
+  const statusEl = document.getElementById('status-msg');
+  statusEl.textContent = 'Sending results to grade sheet…';
+  statusEl.className = 'status-msg';
+
+  document.getElementById('results-card').classList.add('visible');
+  document.getElementById('results-card').scrollIntoView({behavior:'smooth'});
+
+  if (APPS_SCRIPT_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
+    statusEl.textContent = '⚠ Google Sheets URL not yet configured. See setup instructions.';
+    statusEl.className = 'status-msg err';
+    btn.textContent = 'Submitted';
+    return;
+  }
+
+  const payload = {
+    timestamp,
+    name,
+    studentId,
+    score,
+    total: 46,
+    percent: pct,
+    responses
+  };
+
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(payload)
+  })
+  .then(() => {
+    statusEl.textContent = 'Results sent to grade sheet successfully.';
+    statusEl.className = 'status-msg ok';
+    btn.textContent = 'Submitted';
+  })
+  .catch(() => {
+    statusEl.textContent = 'Could not reach grade sheet. Please screenshot this result.';
+    statusEl.className = 'status-msg err';
+    btn.textContent = 'Submitted';
+  });
+}
+</script>
+</body>
+</html>
